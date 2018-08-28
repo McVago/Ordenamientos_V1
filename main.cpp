@@ -33,6 +33,7 @@ int main(int argc, char *argv[])
     //shakersort(A,i);
     //shellSort(A,i);
     //insertionSort(A,i);
+    //mergeSort(A,0,(i - 1));
     cout << "[";
     for (int j = 0; j <= (i - 1); j++) cout << A[j] <<",";
     cout << "]"<< endl;
