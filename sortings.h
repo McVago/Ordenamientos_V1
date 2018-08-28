@@ -4,6 +4,52 @@
 #include <cstdlib>
 #include <ctime>
 using namespace std;
+
+// Start of insertion sort
+void insertionSort(Array<int> arr, int n)
+{
+   int i, key, j;
+   for (i = 1; i < n; i++)
+   {
+       key = arr[i];
+       j = i-1;
+       while (j >= 0 && arr[j] > key)
+       {
+           arr[j+1] = arr[j];
+           j = j-1;
+       }
+       arr[j+1] = key;
+   }
+}
+// End of insertion sort
+
+// Start of Bubble double / Shaker sort
+void shakersort(Array<int> &arr, int end)
+{
+    bool permutation;
+    int en_cours = 0, sens = 1;
+    int debut = 1;
+    do
+    {
+        permutation = false;
+        while (((sens == 1) && (en_cours < end)) || ((sens == -1) && (en_cours > debut)))
+        {
+            en_cours += sens;
+            if (arr[en_cours] < arr[en_cours-1])
+            {
+                int temp = arr[en_cours];
+                arr[en_cours] = arr[en_cours-1];
+                arr[en_cours-1] = temp;
+                permutation = true;
+            }
+        }
+        if (sens==1) end--; else debut++;
+        sens = -sens;
+    }
+    while (permutation);
+}
+//End of shaker sort
+
 //Start of quicksort
 
 //function to make partitions
@@ -34,31 +80,21 @@ void quicksort(Array<int> arr, int low, int high){
 
   }
 }
-
-// Start of Bubble double / Shaker sort
-void shakersort(Array<int> &arr, int end)
+//Start of shellsort
+int shellSort(Array<int> arr, int n)
 {
-    bool permutation;
-    int en_cours = 0, sens = 1;
-    int debut = 1;
-    do
+    for (int gap = n/2; gap > 0; gap /= 2)
     {
-        permutation = false;
-        while (((sens == 1) && (en_cours < end)) || ((sens == -1) && (en_cours > debut)))
+        for (int i = gap; i < n; i += 1)
         {
-            en_cours += sens;
-            if (arr[en_cours] < arr[en_cours-1])
-            {
-                int temp = arr[en_cours];
-                arr[en_cours] = arr[en_cours-1];
-                arr[en_cours-1] = temp;
-                permutation = true;
-            }
+            int temp = arr[i];
+            int j;
+            for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) arr[j] = arr[j - gap];
+            arr[j] = temp;
         }
-        if (sens==1) end--; else debut++;
-        sens = -sens;
     }
-    while (permutation);
+    return 0;
 }
+//end of shellsort
 
 #endif // SORTINGS_H

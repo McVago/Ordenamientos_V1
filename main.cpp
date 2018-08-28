@@ -21,15 +21,18 @@ int main(int argc, char *argv[])
     if (i == 0)
     i = 1;
     Array<int> A((i - 1), c);
-    for (int j = 0; j <= (i-1); j++){
-    c = (rand()%1000)+1;
-    A[j] = c;
-    //cout << "Me cago en Dios" << c << endl;
+    for (int j = 0; j <= (i-1); j++)
+    {
+        c = (rand()%1000)+1;
+        A[j] = c;
     }
     cout << "[";
     for (int j = 0; j <= (i-1); j++) cout << A[j] << ",";
     cout << "]"<< endl;
-    quicksort(A, 0, i);
+    //quicksort(A, 0, (i-1));
+    //shakersort(A,i);
+    //shellSort(A,i);
+    //insertionSort(A,i);
     cout << "[";
     for (int j = 0; j <= (i - 1); j++) cout << A[j] <<",";
     cout << "]"<< endl;
