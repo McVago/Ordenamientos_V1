@@ -35,5 +35,30 @@ void quicksort(Array<int> arr, int low, int high){
   }
 }
 
+// Start of Bubble double / Shaker sort
+void shakersort(Array<int> &arr, int end)
+{
+    bool permutation;
+    int en_cours = 0, sens = 1;
+    int debut = 1;
+    do
+    {
+        permutation = false;
+        while (((sens == 1) && (en_cours < end)) || ((sens == -1) && (en_cours > debut)))
+        {
+            en_cours += sens;
+            if (arr[en_cours] < arr[en_cours-1])
+            {
+                int temp = tableau[en_cours];
+                arr[en_cours] = arr[en_cours-1];
+                arr[en_cours-1] = temp;
+                permutation = true;
+            }
+        }
+        if (sens==1) fin--; else debut++;
+        sens = -sens;
+    }
+    while (permutation);
+}
 
 #endif // SORTINGS_H
