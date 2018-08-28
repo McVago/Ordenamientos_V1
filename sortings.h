@@ -49,13 +49,13 @@ void shakersort(Array<int> &arr, int end)
             en_cours += sens;
             if (arr[en_cours] < arr[en_cours-1])
             {
-                int temp = tableau[en_cours];
+                int temp = arr[en_cours];
                 arr[en_cours] = arr[en_cours-1];
                 arr[en_cours-1] = temp;
                 permutation = true;
             }
         }
-        if (sens==1) fin--; else debut++;
+        if (sens==1) end--; else debut++;
         sens = -sens;
     }
     while (permutation);
